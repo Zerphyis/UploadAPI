@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Importar Transações</title>
+</head>
+<body>
+<h1>Importar Transações</h1>
+<form action="/transacoes/importar" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv">
+    <button type="submit">Importar</button>
+</form>
+
+<h2>Importações Realizadas</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Data/Hora Importação</th>
+        <th>Data Transação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="importacao : ${importacoes}">
+        <td th:text="${importacao.dataHoraImportacao}"></td>
+        <td th:text="${importacao.dataTransacao}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
