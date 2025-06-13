@@ -26,7 +26,7 @@ public class ControllerTransacao {
         public String mostrarPaginaImportacao(Model model) {
             List<DataImportacao> importacoes = transacaoService.listarTodasImportacoes();
             model.addAttribute("importacoes", importacoes);
-            return "index";
+            return "importacoes/listar";
         }
 
     @PostMapping("/importar")
@@ -36,7 +36,7 @@ public class ControllerTransacao {
                     model.addAttribute("message", "Transações importadas com sucesso.");
                     List<DataImportacao> importacoes = transacaoService.listarTodasImportacoes();
                     model.addAttribute("importacoes", importacoes);
-                    return "index";
+                    return "importacoes/listar";
                 } catch (Exception e) {
                     model.addAttribute("message", "Erro ao importar transações: " + e.getMessage());
                     return "transacao/resposta";
