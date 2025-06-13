@@ -3,6 +3,7 @@ package dev.Zerphyis.upload.domain.transacoes;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import dev.Zerphyis.upload.aplication.records.DataTransacao;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -45,6 +46,18 @@ public class Transacao {
 
         public Transacao() {
         }
+
+        public Transacao(DataTransacao data){
+            this.bancoOrigem=data.bancoOrigem();
+            this.agenciaOrigem= data.agenciaOrigem();
+            this.contaOrigem=data.contaOrigem();
+            this.bancoDestino= data.bancoDestino();
+            this.contaDestino=data.contaDestino();
+            this.agenciaDestino= data.agenciaDestino();
+            this.valor=data.valor();
+            this.datatTransacao=data.datatTransacao();
+        }
+
 
 
 
