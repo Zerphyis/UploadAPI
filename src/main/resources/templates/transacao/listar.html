@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Transações</title>
+</head>
+
+<body>
+<h1>Lista de Transações</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Banco Origem</th>
+        <th>Agência Origem</th>
+        <th>Conta Origem</th>
+        <th>Banco Destino</th>
+        <th>Agência Destino</th>
+        <th>Conta Destino</th>
+        <th>Valor</th>
+        <th>Data Transação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="transacao : ${transacoes}">
+        <td th:text="${transacao.bancoOrigem}"></td>
+        <td th:text="${transacao.agenciaOrigem}"></td>
+        <td th:text="${transacao.contaOrigem}"></td>
+        <td th:text="${transacao.bancoDestino}"></td>
+        <td th:text="${transacao.agenciaDestino}"></td>
+        <td th:text="${transacao.contaDestino}"></td>
+        <td th:text="${transacao.valor}"></td>
+        <td th:text="${transacao.datatTransacao}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>
