@@ -1,5 +1,6 @@
 package dev.Zerphyis.upload.domain.importacao;
 
+import dev.Zerphyis.upload.aplication.records.DataImportacao;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -17,6 +18,10 @@ public class Importacao {
     private LocalDate dataTransacao;
 
     public Importacao() {
+    }
+    public Importacao(DataImportacao data){
+        this.dataHoraImportacao=data.dataHoraImportacao();
+        this.dataTransacao=data.dataTransacao();
     }
 
     public LocalDate getDataTransacao() {
