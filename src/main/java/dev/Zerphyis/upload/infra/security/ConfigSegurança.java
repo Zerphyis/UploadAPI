@@ -15,27 +15,26 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ConfigSegurança {
     @Bean
     public SecurityFilterChain filtrosSeguranca(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/Estilos/**",
-                            "/", "/index", "/home", "/esqueci-minha-senha").permitAll();
-                    req.anyRequest().authenticated();
-                })
-                .formLogin(form -> form.loginPage("/login")
-                        .defaultSuccessUrl("/")
-                        .permitAll())
+        http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/login", "/auth/**", "/css/**", "/js/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/transacoes", true)
+                        .permitAll()
+                )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")
-                        .permitAll())
-                .rememberMe(rememberMe -> rememberMe.key("lembrarDeMim")
-                        .alwaysRemember(true)
-                )
-                .csrf(Customizer.withDefaults())
-                .build();
+                        .permitAll()
+                );
+
+        return http.build();
     }
 
     @Bean
-    public PasswordEncoder codificadorSenha(){
+    public PasswordEncoder codificadorSenha() {
         return new BCryptPasswordEncoder();
     }
 }
