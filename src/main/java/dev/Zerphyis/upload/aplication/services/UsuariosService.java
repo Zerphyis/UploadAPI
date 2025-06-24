@@ -34,8 +34,8 @@ public class UsuariosService implements UserDetailsService {
     }
 
     public Long salvarUsuarios(DataUsuarios data) {
-        var newUsuarios = new Usuarios(data);
-        String senhaCriptografada = encriptador.encode(newUsuarios.getPassword());
+        String senhaCriptografada = encriptador.encode(data.senha());
+        var newUsuarios = new Usuarios(data.nome(), data.email(), senhaCriptografada);
         var salvarUsuarios = usuarioRepository.save(newUsuarios);
         return salvarUsuarios.getId();
     }
