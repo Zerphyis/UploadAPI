@@ -15,24 +15,35 @@ import java.util.List;
 public class Usuarios implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
     @NotBlank
+    @Column(name = "nome")
     private String nome;
+
     @NotBlank
+    @Column(name = "email")
     private String email;
+
     @NotBlank
+    @Column(name = "senha")
     private String senha;
+
+    @Column(name = "token")
     private String token;
+
+    @Column(name = "expiracao_token")
     private LocalDateTime expiracaoToken;
 
     public Usuarios() {
 
     }
 
-    public Usuarios(DataUsuarios data) {
-        this.nome= data.nome();
-        this.email= data.email();
-        this.senha= data.senha();
+    public Usuarios(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
     }
 
 
@@ -75,12 +86,12 @@ public class Usuarios implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return this.senha;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return this.email;
     }
 
     public String getToken() {
