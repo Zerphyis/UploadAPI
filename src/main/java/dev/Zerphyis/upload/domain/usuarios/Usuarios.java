@@ -23,7 +23,6 @@ public class Usuarios implements UserDetails {
     private String nome;
 
     @NotBlank
-    @Column(name = "email")
     private String email;
 
     @NotBlank
@@ -108,5 +107,25 @@ public class Usuarios implements UserDetails {
 
     public void setExpiracaoToken(LocalDateTime expiracaoToken) {
         this.expiracaoToken = expiracaoToken;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
