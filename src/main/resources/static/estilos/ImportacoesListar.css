@@ -56,3 +56,18 @@ thead {
   background-color: #2b6cb0;
   color: #fff;
 }
+
+.btn-logout {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #9b2c2c;
+}
