@@ -28,9 +28,12 @@ public class UsuariosService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioRepository.findByEmailIgnoreCase(username)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("Procurando usuário com email: " + email);
+        var usuario = usuarioRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() -> new UsernameNotFoundException("O usuário não foi encontrado!"));
+        System.out.println("Usuário encontrado: " + usuario.getEmail());
+        return usuario;
     }
 
     public Long salvarUsuarios(DataUsuarios data) {
