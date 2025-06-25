@@ -15,13 +15,14 @@ import java.io.UnsupportedEncodingException;
 public class EmailService {
     private final JavaMailSender enviadorEmail;
     private static final String EMAIL_ORIGEM = "Teste01@email.com";
-    private static final String NOME_ENVIADOR = "Challenger alura";
+    private static final String NOME_ENVIADOR = "Challenger Back-End #3";
 
     public static final String URL_SITE = "http://localhost:8080";
 
     public EmailService(JavaMailSender enviadorEmail) {
         this.enviadorEmail = enviadorEmail;
     }
+
     @Async
     private void enviarEmail(String emailUsuario, String assunto, String conteudo) {
         MimeMessage message = enviadorEmail.createMimeMessage();
@@ -40,12 +41,18 @@ public class EmailService {
     }
 
     public void enviarEmailSenha(Usuarios usuario) {
-        String assunto = "Aqui está seu link para alterar a senha";
-        String conteudo = gerarConteudoEmail("Olá [[name]],<br>"
-                + "Por favor clique no link abaixo para alterar a senha:<br>"
-                + "<h3><a href=\"[[URL]]\" target=\"_self\">ALTERAR</a></h3>"
-                + "Obrigado,<br>"
-                + "Clínica Voll Med.", usuario.getNome(), URL_SITE + "/recuperar-conta?codigo=" + usuario.getToken());
+        String assunto = "Challenger Back-End #3 - Solicitação de alteração de senha";
+
+        String template = "<p>Olá <strong>[[name]]</strong>,</p>"
+                + "<p>Recebemos uma solicitação para redefinir a sua senha. "
+                + "Para continuar, clique no link abaixo:</p>"
+                + "<p><a href=\"[[URL]]\" target=\"_blank\" style=\"color: #2b6cb0; font-weight: bold; text-decoration: none;\">"
+                + "Alterar minha senha</a></p>"
+                + "<p>Se você não solicitou essa alteração, ignore este e-mail.</p>"
+                + "<br>"
+                + "<p>Obrigado,<br>Equipe Challenger Back-End #3</p>";
+
+        String conteudo = gerarConteudoEmail(template, usuario.getNome(), URL_SITE + "/recuperar-conta?codigo=" + usuario.getToken());
 
         enviarEmail(usuario.getUsername(), assunto, conteudo);
     }
