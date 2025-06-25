@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ControllerLogin {
-
-
     private final UsuariosService service;
 
     public static final String FORMULARIO_ALTERACAO_SENHA = "auth/alteracao-senha";
