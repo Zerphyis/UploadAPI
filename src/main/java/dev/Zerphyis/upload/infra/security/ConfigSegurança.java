@@ -17,12 +17,12 @@ public class ConfigSegurança {
     public SecurityFilterChain filtrosSeguranca(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/auth/**", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/login", "/auth/**", "/css/**", "/js/**", "/estilos/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/transacoes", true)
+                        .defaultSuccessUrl("/transacoes/mostrar", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
