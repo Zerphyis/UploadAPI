@@ -43,3 +43,37 @@ src/
 <br>
 └── aplication/records/
 <br>
+
+---
+
+## 🧩 Funcionalidades
+
+### 1. 🔐 Autenticação
+- `POST /login`: Retorna um token JWT  
+- `PUT /esqueci-minha-senha`: Altera a senha do usuário autenticado  
+
+<h3>-Pagina de Login:</h3>
+
+![Image](https://github.com/user-attachments/assets/03770357-b159-4b1e-a699-6bf9004caca0)
+
+<h3>-Pagina de recuperação de conta:</h3>
+
+![Image](https://github.com/user-attachments/assets/dfe4987c-5c29-4328-9434-b1926907f2dd)
+
+### 2. 📂 Importação de Transações
+- `POST /transacoes/importar`: Faz upload de dados de transações  
+- Aceita arquivos com dados em formato estruturado  
+- Realiza persistência no banco  
+
+<h3>-Pagina de Importação de transações</h3>
+
+![Image](https://github.com/user-attachments/assets/a2ce6122-ef7d-43c3-b0ec-b68eba83c055)
+
+### 3. 📊 Listagem de Transações
+- `GET /transacoes`: Lista as transações salvas no sistema  
+
+<h3>-Pagina de listagem de transações</h3>
+
+![Image](https://github.com/user-attachments/assets/28eef981-18cd-4aba-b36a-61c5c5cb2278)
+
+---
