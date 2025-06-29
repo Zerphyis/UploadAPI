@@ -26,3 +26,20 @@ Este projeto é uma **API RESTful** desenvolvida em **Java com Spring Boot**, co
 ---
 
 ## 📁 Estrutura do Projeto
+<br>
+src/
+<br>
+└── main/java/dev/Zerphyis/upload/
+<br>
+├── UploadApplication.java
+<br>
+├── controller/
+<br>
+├── domain/
+<br>
+├── repository/
+<br>
+├── service/
+<br>
+└── aplication/records/
+<br>
