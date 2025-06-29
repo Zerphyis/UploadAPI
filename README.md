@@ -77,3 +77,17 @@ src/
 ![Image](https://github.com/user-attachments/assets/28eef981-18cd-4aba-b36a-61c5c5cb2278)
 
 ---
+## ▶️ Como Rodar
+
+### Pré-requisitos
+- Java 17  
+- Maven 3.8+
+
+### Comandos
+
+```bash
+git clone https://github.com/seu-usuario/UploadAPI.git
+cd UploadAPI
+./mvnw clean install
+./mvnw spring-boot:run
+API disponível em: http://localhost:8080
